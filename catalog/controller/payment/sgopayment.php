@@ -15,7 +15,13 @@ class ControllerPaymentsgopayment extends Controller {
 		$this->data ["order_id"] = $this->session->data ['order_id'];
 		$this->data ["total"] = $this->cart->getTotal ();
 		$this->data ["back_url"] = $this->url->link ( 'payment/sgopayment/success' ) . "&order_id=" . $this->session->data ['order_id'];
-		$this->data ["urlUpdateOrder"]  = $this->url->link('payment/sgopayment/insertfee'). "&order_id=" . $this->session->data ['order_id'];
+
+		// update ssl
+		$isProduction = $this->config->get('sgopayment_environment');
+
+        $urlBase = $isProduction == '1' ? $this->url->link('payment/sgopayment/insertfee', '', 'SSL') : $this->url->link('payment/sgopayment/insertfee');
+
+        $this->data ["urlUpdateOrder"] = $urlBase . "&order_id=" . $this->session->data ['order_id'];
 		
 		//fee transaction
 		$this->data ["sgopayment_credit_card_mdr"] = $this->config->get ( 'sgopayment_credit_card_mdr' );
