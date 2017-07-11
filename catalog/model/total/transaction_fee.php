@@ -39,6 +39,8 @@ class ModelTotalTransactionFee extends Model {
 				$feeTransaction = ($this->request->post['sgopayment_transaction_fee_permata_atm'] == '')?0:$this->request->post['sgopayment_transaction_fee_permata_atm'];
 			}elseif($productCode == 'DANAMONOB'){
 				$feeTransaction = ($this->request->post['sgopayment_transaction_fee_danamon_ob'] == '')?0:$this->request->post['sgopayment_transaction_fee_danamon_ob'];			
+			}elseif($productCode == 'DANAMONATM'){
+				$feeTransaction = ($this->request->post['sgopayment_transaction_fee_danamon_atm'] == '')?0:$this->request->post['sgopayment_transaction_fee_danamon_atm'];			
 			}elseif($productCode == 'BIIATM'){
 				$feeTransaction = ($this->request->post['sgopayment_transaction_fee_bii_atm'] == '')?0:$this->request->post['sgopayment_transaction_fee_bii_atm'];
 			}elseif($productCode == 'NOBUPAY'){
