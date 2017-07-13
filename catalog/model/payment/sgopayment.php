@@ -70,7 +70,7 @@ class ModelPaymentSgopayment extends Model {
 		$currSymobl = $this->currency->getSymbolLeft($this->session->data['currency']);
 		
 		//insert fee to tbl order_total				
-		$sqlstatustransactionfee = $this->db->query("SELECT count(*) as `status_transaction_fee` FROM `oc_order_total` where order_id =".$order_id." and code = 'transaction_fee'");
+		$sqlstatustransactionfee = $this->db->query("SELECT count(*) as `status_transaction_fee` FROM `".DB_PREFIX."order_total` where order_id =".$order_id." and code = 'transaction_fee'");
 		
 		if ($sqlstatustransactionfee->row['status_transaction_fee'] == 0){ // if transaction_fee not insert yet
 			$text = $currSymobl.".".number_format($fee,2);
