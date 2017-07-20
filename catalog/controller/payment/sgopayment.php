@@ -436,10 +436,11 @@ class ControllerPaymentsgopayment extends Controller {
         $comment = "";
         $comment .= $this->language->get('text_transfer_waiting') . " " . $product . "\n\n";
         $this->load->model('checkout/order');
+
+        $this->model_payment_sgopayment->insertfee($fee, $order_id, $product);
         $this->model_checkout_order->confirm($order_id, $this->config->get('sgopayment_order_status_waiting'), $comment, true);
         //}
 
-        $this->model_payment_sgopayment->insertfee($fee, $order_id, $product);
     }
 
 }
