@@ -27,7 +27,7 @@ class ControllerCheckoutOrderpay extends Controller {
             $feeMDR = 0;
             if ($productCode == 'BCAKLIKPAY') {
                 $feeTransaction = ($this->request->post['sgopayment_transaction_fee_bca_klikpay'] == '') ? 0 : $this->request->post['sgopayment_transaction_fee_bca_klikpay'];
-            } elseif ($productCode == 'BRI') {
+            } elseif ($productCode == 'EPAYBRI') {
                 $feeTransaction = ($this->request->post['sgopayment_transaction_fee_epay_bri'] == '') ? 0 : $this->request->post['sgopayment_transaction_fee_epay_bri'];
             } elseif ($productCode == 'MANDIRIIB') {
                 $feeTransaction = ($this->request->post['sgopayment_transaction_fee_mandiri_ib'] == '') ? 0 : $this->request->post['sgopayment_transaction_fee_mandiri_ib'];
@@ -45,6 +45,8 @@ class ControllerCheckoutOrderpay extends Controller {
                 $feeTransaction = floatval($feeCreditCard) + ((floatval($totalorder) + floatval($feeCreditCard)) * floatval($feeMDR) / 100);
             } elseif ($productCode == 'PERMATAATM') {
                 $feeTransaction = ($this->request->post['sgopayment_transaction_fee_permata_atm'] == '') ? 0 : $this->request->post['sgopayment_transaction_fee_permata_atm'];
+            } elseif ($productCode == 'PERMATANETPAY') {
+                $feeTransaction = ($this->request->post['sgopayment_transaction_fee_permata_netpay'] == '') ? 0 : $this->request->post['sgopayment_transaction_fee_permata_netpay'];
             } elseif ($productCode == 'DANAMONATM') {
                 $feeTransaction = ($this->request->post['sgopayment_transaction_fee_danamon_atm'] == '') ? 0 : $this->request->post['sgopayment_transaction_fee_danamon_atm'];
             } elseif ($productCode == 'DANAMONOB') {
